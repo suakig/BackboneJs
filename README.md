@@ -1,3 +1,5 @@
+グーグルクロームのjavascript debugエラー
+
 ➜  ToDo git:(master) tree
 .
 ├── index.html
