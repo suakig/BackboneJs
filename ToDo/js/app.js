@@ -7,28 +7,19 @@ var Task = Backbone.Model.extend({
         title: "do something!",
         completed: false
     },
-    validate: function(attrs) {
-        if ( _.isEmpty(attrs.title) ) {
-            return "title must not be empty!";
-        }
-    },
-    toggle: function() {
-        this.set('completed', !this.get('completed') )
-    }
 });
 
+var task = new Task();
 
-var task1 = new Task({
-    completed: true
+//View
+
+var TaskView = Backbone.View.extend({
+    tagName: 'li'
 });
 
-//task1.set('title','newTitle');
-//var title = task1.get('title');
-//console.log(title);
+var taskView = new TaskView({ model: task});
+console.log(taskView.el);
 
-console.log(task1.toJSON());
-task1.set({title: ''},{validate: true});
-//task1.toggle();
-console.log(task1.toJSON());
+//taskView.$el Jqueryのオブジェクトになる
 
 })();
