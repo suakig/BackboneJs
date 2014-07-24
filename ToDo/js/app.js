@@ -15,12 +15,6 @@ var task = new Task();
 
 var TaskView = Backbone.View.extend({
     tagName: 'li',
-    events: {
-        "click .command": "sayHello"
-    },
-    sayHello: function(){
-        alert('hello!');
-    },
     template: _.template( $('#task-template').html() ),
     render: function() {
         var template = this.template( this.model.toJSON() );
@@ -29,7 +23,25 @@ var TaskView = Backbone.View.extend({
     }
 });
 
-var taskView = new TaskView({ model: task});
-$('body').append(taskView.render().el);
+//Collection
+
+var Tasks = Backbone.Collection.extend({
+    model: Task
+})
+
+var tasks = new Tasks([
+    {
+        title: 'task1',
+        completed: true 
+    },
+    {
+        title: 'task2'
+    },
+    {
+        title: 'task3'
+    },
+])
+
+console.log(tasks.toJSON())
 
 })();
